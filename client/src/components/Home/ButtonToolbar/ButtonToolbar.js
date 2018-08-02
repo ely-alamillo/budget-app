@@ -4,8 +4,8 @@ import { Modal } from '../../shared/Modal/Modal';
 const ButtonToolbar = () => {
   const createBudget = '#createBudget';
   const addExpense = '#addExpense';
-  const toggle = modal => {
-    document.getElementById(modal).classList.toggle('is-active');
+  const toggle = modalId => {
+    document.getElementById(modalId).classList.toggle('is-active');
   };
 
   return (
@@ -31,7 +31,7 @@ const ButtonToolbar = () => {
         </p>
       </div>
       <Modal for={createBudget} title={'Create Budget'} />
-      <Modal for={addExpense} title={'Add Expense'} />
+      <Modal for={addExpense} title={'A Expense'} />
     </div>
   );
 };
