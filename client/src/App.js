@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
-// import Home from './components/home/home';
+import Home from './components/Home/Home';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        {/* <Route path="/" exact={true} component={Home} /> */}
+        <Route path="/" exact={true} component={Home} />
         <Footer />
       </div>
     );

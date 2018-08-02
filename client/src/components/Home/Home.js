@@ -1,13 +1,13 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Component } from "react";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { Component } from 'react';
 
-import "./Home.css";
+import './Home.css';
 
 class Home extends Component {
   render() {
     return (
-      <section className="section" style={{ height: "90vh" }}>
+      <section className="section" style={{ height: '90vh' }}>
         {/* <div className="tile is-ancestor">
           <div className="tile">
             <div className="tile">
