@@ -1,6 +1,13 @@
 import React from 'react';
+import { Modal } from '../../shared/Modal/Modal';
 
 const ButtonToolbar = () => {
+  const createBudget = '#createBudget';
+  const addExpense = '#addExpense';
+  const toggle = modal => {
+    document.getElementById(modal).classList.toggle('is-active');
+  };
+
   return (
     <div className="level">
       <div className="level-left">
@@ -13,12 +20,18 @@ const ButtonToolbar = () => {
 
       <div className="level-right">
         <p className="level-item">
-          <button className="button">Create Budget</button>
+          <button className="button" onClick={() => toggle(createBudget)}>
+            Create Budget
+          </button>
         </p>
         <p className="level-item">
-          <button className="button">Add Expense</button>
+          <button className="button" onClick={() => toggle(addExpense)}>
+            Add Expense
+          </button>
         </p>
       </div>
+      <Modal for={createBudget} title={'Create Budget'} />
+      <Modal for={addExpense} title={'Add Expense'} />
     </div>
   );
 };
