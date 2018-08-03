@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal } from '../../shared/Modal/Modal';
+import CreateBudgetForm from '../CreatBudgetForm/CreateBudgetForm';
 
 const ButtonToolbar = () => {
   const createBudget = '#createBudget';
@@ -30,7 +31,9 @@ const ButtonToolbar = () => {
           </button>
         </p>
       </div>
-      <Modal for={createBudget} title={'Create Budget'} />
+      <Modal for={createBudget} title={'Create Budget'}>
+        <CreateBudgetForm />
+      </Modal>
       <Modal for={addExpense} title={'A Expense'} />
     </div>
   );
