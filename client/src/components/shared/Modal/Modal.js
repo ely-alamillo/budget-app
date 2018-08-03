@@ -2,7 +2,6 @@ import React from 'react';
 
 export const Modal = props => {
   const toggle = () => {
-    console.log(document.querySelector(props.for));
     document.getElementById(props.for).classList.toggle('is-active');
   };
 
