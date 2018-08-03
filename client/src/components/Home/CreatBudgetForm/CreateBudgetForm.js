@@ -8,6 +8,7 @@ const intialState = {
 };
 
 class CreateBudgetForm extends Component {
+  state = {};
   componentDidMount() {
     this.setState(intialState);
   }
@@ -20,6 +21,12 @@ class CreateBudgetForm extends Component {
 
   handleCategoryChange = e => {
     this.setState({ category: e.target.value });
+  };
+
+  submitBudget = () => {
+    const budget = { ...this.state };
+    this.props.createBudget(budget);
+    this.setState(intialState);
   };
 
   render() {
@@ -91,6 +98,22 @@ class CreateBudgetForm extends Component {
                   onChange={this.handleInput}
                 />
               </div>
+            </div>
+
+            <div className="field is-grouped">
+              <p className="control">
+                <a className="button is-link" onClick={this.submitBudget}>
+                  Create
+                </a>
+              </p>
+              <p className="control">
+                <a
+                  className="button"
+                  onClick={() => this.props.closeModal(this.props.modalId)}
+                >
+                  Cancel
+                </a>
+              </p>
             </div>
           </form>
         </div>
