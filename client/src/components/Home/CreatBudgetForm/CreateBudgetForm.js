@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+const intialState = {
+  category: '',
+  budgetName: '',
+  budgetTotal: '',
+  category: '',
+  description: ''
+};
 
 class CreateBudgetForm extends Component {
-  state = {
-    category: '',
-    budgetName: '',
-    budgetTotal: '',
-    category: '',
-    description: ''
-  };
+  componentDidMount() {
+    this.setState(intialState);
+  }
 
   handleInput = e => {
     this.setState({
@@ -57,7 +60,7 @@ class CreateBudgetForm extends Component {
               </div>
             </div>
 
-            <div className="field">
+            {/* <div className="field">
               <p className="control has-icons-left">
                 <span className="select">
                   <select
@@ -76,7 +79,7 @@ class CreateBudgetForm extends Component {
                   <i className="fas fa-globe" />
                 </span>
               </p>
-            </div>
+            </div> */}
 
             <div className="field">
               <label className="label">Description</label>
