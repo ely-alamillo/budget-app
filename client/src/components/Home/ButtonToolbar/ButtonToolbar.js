@@ -5,6 +5,7 @@ import CreateBudgetForm from '../CreatBudgetForm/CreateBudgetForm';
 const ButtonToolbar = () => {
   const createBudget = '#createBudget';
   const addExpense = '#addExpense';
+
   const toggle = modalId => {
     document.getElementById(modalId).classList.toggle('is-active');
   };
@@ -31,7 +32,7 @@ const ButtonToolbar = () => {
           </button>
         </p>
       </div>
-      <Modal for={createBudget} title={'Create Budget'}>
+      <Modal for={createBudget} title={'Create Budget'} toggle={toggle}>
         <CreateBudgetForm />
       </Modal>
       <Modal for={addExpense} title={'A Expense'} />
