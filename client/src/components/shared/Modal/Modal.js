@@ -15,12 +15,6 @@ export const Modal = props => {
             <button className="delete" aria-label="close" onClick={toggle} />
           </header>
           <section className="modal-card-body">{props.children}</section>
-          <footer className="modal-card-foot">
-            <button className="button is-success">Create</button>
-            <button className="button" onClick={toggle}>
-              Cancel
-            </button>
-          </footer>
         </div>
       </div>
     </div>
