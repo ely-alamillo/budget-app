@@ -17,9 +17,21 @@ class Home extends Component {
   };
 
   addExpense = expense => {
-    console.log('add expense');
-    const { selectedBudget } = this.state;
-    console.log(selectedBudget);
+    const { budgetName } = this.state.selectedBudget;
+    const { expenses } = this.state.budgets[budgetName];
+
+    this.setState({
+      budgets: {
+        [budgetName]: {
+          ...this.state.budgets[budgetName],
+          expenses: [...expenses, expense]
+        }
+      },
+      selectedBudget: {
+        ...this.state.selectedBudget,
+        expenses: [...this.state.selectedBudget.expenses, expense]
+      }
+    });
   };
 
   render() {
