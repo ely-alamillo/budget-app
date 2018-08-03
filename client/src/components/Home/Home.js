@@ -8,12 +8,12 @@ import Dashboard from './Dashboard/Dashboard';
 import './Home.css';
 
 class Home extends Component {
-  state = { budgets: {} };
+  state = { budgets: {}, selectedBudget: {} };
 
   createBudget = budget => {
     console.log('set create budget');
     const name = budget.budgetName;
-    this.setState({ budgets: { [name]: budget } });
+    this.setState({ budgets: { [name]: budget }, selectedBudget: budget });
   };
 
   addNewExpense = expense => {
@@ -26,7 +26,7 @@ class Home extends Component {
           createBudget={this.createBudget}
           addNewExpense={this.addNewExpense}
         />
-        <Dashboard />
+        <Dashboard budget={this.state.selectedBudget} />
       </section>
     );
   }
