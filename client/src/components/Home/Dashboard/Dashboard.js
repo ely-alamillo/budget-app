@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-class Dasboard extends Component {
+class Dashboard extends Component {
   render() {
+    const { budget } = this.props;
     return (
       <div>
         <div className="tile is-ancestor">
@@ -9,14 +10,22 @@ class Dasboard extends Component {
             <div className="tile">
               <div className="tile is-parent ">
                 <article className="tile is-child notification is-success">
-                  <p className="title">Budget</p>
+                  <p className="subtitle">
+                    {budget.budgetName
+                      ? `${budget.budgetName} (total)`
+                      : 'Budget Total'}
+                  </p>
+                  <p className="title">
+                    {budget.budgetTotal ? budget.budgetTotal : '0.00'}
+                  </p>
                 </article>
               </div>
             </div>
             <div className="tile">
               <div className="tile is-parent ">
                 <article className="tile is-child notification is-warning">
-                  <p className="title">Expenses</p>
+                  <p className="subtitle">Expenses</p>
+                  <p className="title">{'0.00'}</p>
                 </article>
               </div>
             </div>
@@ -46,4 +55,4 @@ class Dasboard extends Component {
   }
 }
 
-export default Dasboard;
+export default Dashboard;
