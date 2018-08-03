@@ -27,6 +27,7 @@ class CreateBudgetForm extends Component {
     const budget = { ...this.state };
     this.props.createBudget(budget);
     this.setState(intialState);
+    this.props.closeModal(this.props.modalId);
   };
 
   render() {
