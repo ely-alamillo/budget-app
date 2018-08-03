@@ -16,15 +16,18 @@ class Home extends Component {
     this.setState({ budgets: { [name]: budget }, selectedBudget: budget });
   };
 
-  addNewExpense = expense => {
+  addExpense = expense => {
     console.log('add expense');
+    const { selectedBudget } = this.state;
+    console.log(selectedBudget);
   };
+
   render() {
     return (
       <section className="section" style={{ height: '90vh' }}>
         <ButtonToolbar
           createBudget={this.createBudget}
-          addNewExpense={this.addNewExpense}
+          addExpense={this.addExpense}
         />
         <Dashboard budget={this.state.selectedBudget} />
       </section>

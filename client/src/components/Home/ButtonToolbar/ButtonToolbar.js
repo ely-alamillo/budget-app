@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal } from '../../shared/Modal/Modal';
 import CreateBudgetForm from '../CreatBudgetForm/CreateBudgetForm';
+import AddExpenseForm from '../AddExpenseForm/AddExpenseForm';
 
 const ButtonToolbar = props => {
   const createBudget = '#createBudget';
@@ -39,7 +40,13 @@ const ButtonToolbar = props => {
           modalId={createBudget}
         />
       </Modal>
-      <Modal for={addExpense} title={'A Expense'} />
+      <Modal for={addExpense} title={'A Expense'}>
+        <AddExpenseForm
+          addExpense={props.addExpense}
+          closeModal={toggle}
+          modalId={addExpense}
+        />
+      </Modal>
     </div>
   );
 };

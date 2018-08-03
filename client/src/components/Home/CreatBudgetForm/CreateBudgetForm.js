@@ -4,7 +4,8 @@ const intialState = {
   budgetName: '',
   budgetTotal: '',
   category: '',
-  description: ''
+  description: '',
+  expenses: []
 };
 
 class CreateBudgetForm extends Component {
