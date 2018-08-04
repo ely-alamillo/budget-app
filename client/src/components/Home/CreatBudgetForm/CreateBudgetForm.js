@@ -10,7 +10,7 @@ const intialState = {
 
 class CreateBudgetForm extends Component {
   state = {};
-  componentDidMount() {
+  componentWillMount() {
     this.setState(intialState);
   }
 
@@ -44,6 +44,7 @@ class CreateBudgetForm extends Component {
                   type="text"
                   placeholder="Monthly Budget"
                   name="budgetName"
+                  value={this.state.budgetName}
                   onChange={this.handleInput}
                 />
                 <span className="icon is-small is-left">
@@ -60,6 +61,7 @@ class CreateBudgetForm extends Component {
                   type="currency"
                   placeholder="100.00"
                   name="budgetTotal"
+                  value={this.state.budgetTotal}
                   onChange={this.handleInput}
                 />
 
@@ -68,28 +70,6 @@ class CreateBudgetForm extends Component {
                 </span>
               </div>
             </div>
-
-            {/* <div className="field">
-              <p className="control has-icons-left">
-                <span className="select">
-                  <select
-                    value={this.category}
-                    defaultValue=""
-                    onChange={this.handleCategoryChange}
-                  >
-                    <option value="">Select Category</option>
-                    <option value="Food">Food</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Misc">Misc.</option>
-                    <option value="Subscriptions">Subscriptions</option>
-                  </select>
-                </span>
-                <span className="icon is-small is-left">
-                  <i className="fas fa-globe" />
-                </span>
-              </p>
-            </div> */}
-
             <div className="field">
               <label className="label">Description</label>
               <div className="control">
@@ -97,6 +77,7 @@ class CreateBudgetForm extends Component {
                   className="textarea"
                   placeholder="Budget for the month"
                   name="description"
+                  value={this.state.description}
                   onChange={this.handleInput}
                 />
               </div>

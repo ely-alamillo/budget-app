@@ -6,6 +6,7 @@ import ButtonToolbar from './ButtonToolbar/ButtonToolbar';
 import Dashboard from './Dashboard/Dashboard';
 
 import './Home.css';
+import { access } from 'fs';
 
 class Home extends Component {
   state = { budgets: {}, selectedBudget: {}, stats: {} };
@@ -38,12 +39,12 @@ class Home extends Component {
   };
 
   calculateStats = () => {
-    console.log('calculatin');
-    // const { selectedBudget } = this.state;
-
+    const { selectedBudget } = this.state;
+    const getTotal = (acc, exp) => acc + Number(exp.expenseTotal);
+    const expensesTotal = selectedBudget.expenses.reduce(getTotal, 0);
     console.log(this.state.selectedBudget.expenses);
 
-    // this.setState({ stats: { expensesTotal } });
+    this.setState({ stats: { expensesTotal } });
   };
 
   render() {
@@ -53,7 +54,10 @@ class Home extends Component {
           createBudget={this.createBudget}
           addExpense={this.addExpense}
         />
-        <Dashboard budget={this.state.selectedBudget} />
+        <Dashboard
+          budget={this.state.selectedBudget}
+          stats={this.state.stats}
+        />
       </section>
     );
   }

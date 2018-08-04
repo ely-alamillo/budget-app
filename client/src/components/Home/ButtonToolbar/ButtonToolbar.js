@@ -15,9 +15,7 @@ const ButtonToolbar = props => {
     <div className="level">
       <div className="level-left">
         <div className="level-item">
-          <p className="subtitle is-12">
-            <strong>123</strong> posts
-          </p>
+          <p className="title is-12">Dashboard</p>
         </div>
       </div>
 

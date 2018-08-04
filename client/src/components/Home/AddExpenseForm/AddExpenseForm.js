@@ -8,7 +8,8 @@ const intialState = {
 
 class AddExpenseForm extends Component {
   state = {};
-  componentDidMount() {
+
+  componentWillMount() {
     this.setState(intialState);
   }
 
@@ -42,6 +43,7 @@ class AddExpenseForm extends Component {
                   type="text"
                   placeholder="Starbucks"
                   name="expenseName"
+                  value={this.state.expenseName}
                   onChange={this.handleInput}
                 />
                 <span className="icon is-small is-left">
@@ -58,6 +60,7 @@ class AddExpenseForm extends Component {
                   type="currency"
                   placeholder="8.00"
                   name="expenseTotal"
+                  value={this.state.expenseTotal}
                   onChange={this.handleInput}
                 />
 
@@ -71,8 +74,7 @@ class AddExpenseForm extends Component {
               <p className="control has-icons-left">
                 <span className="select">
                   <select
-                    value={this.category}
-                    defaultValue=""
+                    value={this.state.category}
                     onChange={this.handleCategoryChange}
                   >
                     <option value="">Select Category</option>
@@ -95,6 +97,7 @@ class AddExpenseForm extends Component {
                   className="textarea"
                   placeholder="Morning Cofee"
                   name="description"
+                  value={this.state.description}
                   onChange={this.handleInput}
                 />
               </div>
