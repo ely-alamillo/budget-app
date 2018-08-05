@@ -1,0 +1,13 @@
+.table-custom {
+  max-height: 400px;
+  overflow: hidden;
+}
+tbody {
+  display: block;
+  overflow: auto;
+  height: 200px;
+  width: auto;
+}
+tr {
+  display: block;
+}
