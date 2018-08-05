@@ -78,9 +78,10 @@ class AddExpenseForm extends Component {
                     onChange={this.handleCategoryChange}
                   >
                     <option value="">Select Category</option>
+                    <option value="Rent">Rent</option>
                     <option value="Food">Food</option>
                     <option value="Clothing">Clothing</option>
-                    <option value="Misc">Misc.</option>
+                    <option value="Other">Other</option>
                     <option value="Subscriptions">Subscriptions</option>
                   </select>
                 </span>
