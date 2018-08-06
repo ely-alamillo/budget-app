@@ -38,5 +38,8 @@ defmodule BudgetApi.Endpoint do
     key: "_budget_api_key",
     signing_salt: "wfP4LCZ5"
 
+  # used for cors
+  plug CORSPlug, origin: "*"
+
   plug BudgetApi.Router
 end
