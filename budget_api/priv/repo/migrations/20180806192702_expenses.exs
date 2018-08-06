@@ -2,6 +2,7 @@ defmodule BudgetApi.Repo.Migrations.Expenses do
   use Ecto.Migration
 
   def change do
+
     create table(:expenses) do
       add :category, :string
       add :description, :string
@@ -9,5 +10,14 @@ defmodule BudgetApi.Repo.Migrations.Expenses do
       add :expenseTotal, :string
     timestamps()
     end
+
+    create table(:budgets) do
+      add :description, :string
+      add :budgetName, :string
+      add :budgetTotal, :string
+    timestamps()
+    end
+
   end
+
 end

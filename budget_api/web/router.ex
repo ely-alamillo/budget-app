@@ -29,8 +29,16 @@ defmodule BudgetApi.Router do
     pipe_through :api
 
     get "/", PageController, :index
+
+    # expenses endpoints
     get "/expenses", ExpensesController, :index # show all expenses
     get "/expenses/:id", ExpensesController, :show # get a single expense
     post "/expenses", ExpensesController, :create # create expense
+
+    # budget endpoints
+    get "/budgets", BudgetsController, :index # show all budgets
+    get "/budgets/:name", BudgetsController, :show # get a single budget
+    post "budget", BudgetsController, :create # create budget
+    
   end
 end
