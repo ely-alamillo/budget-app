@@ -16,11 +16,21 @@ defmodule BudgetApi.Router do
   scope "/", BudgetApi do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    # these are the api endpoints created
+    # get "/", PageController, :index
+    # get "/expenses", ExpensesController, :index # show all expenses
+    # post "/expenses", ExpensesController, :create # create expense
+    # get "/expenses/:id", ExpensesController, :show # get a single expense
+    
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BudgetApi do
-  #   pipe_through :api
-  # end
+  scope "/api", BudgetApi do
+    pipe_through :api
+
+    get "/", PageController, :index
+    get "/expenses", ExpensesController, :index # show all expenses
+    get "/expenses/:id", ExpensesController, :show # get a single expense
+    post "/expenses", ExpensesController, :create # create expense
+  end
 end
