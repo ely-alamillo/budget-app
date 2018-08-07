@@ -21,13 +21,30 @@ const ButtonToolbar = props => {
 
       <div className="level-right">
         <p className="level-item">
-          <button className="button" onClick={() => toggle(createBudget)}>
+          <button
+            className="button"
+            onClick={() => toggle(createBudget)}
+            disabled={props.createDisabled}
+          >
             Create Budget
           </button>
         </p>
         <p className="level-item">
-          <button className="button" onClick={() => toggle(addExpense)}>
+          <button
+            className="button"
+            onClick={() => toggle(addExpense)}
+            disabled={props.expenseDisabled}
+          >
             Add Expense
+          </button>
+        </p>
+        <p className="level-item">
+          <button
+            className="button"
+            disabled
+            onClick={() => console.log('drop tables')}
+          >
+            Delete Budget
           </button>
         </p>
       </div>
