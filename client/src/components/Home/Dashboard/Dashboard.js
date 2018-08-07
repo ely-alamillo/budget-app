@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LineChart from '../Charts/LineChart/LineChart';
 import './Dashboard.css';
 import RadarChart from '../Charts/RadarChart/RadarChart';
+import { Table } from '../Table/Table';
 
 class Dashboard extends Component {
   render() {
@@ -49,48 +50,7 @@ class Dashboard extends Component {
                 <article className="tile is-child notification is-warning">
                   <p className="subtitle">Transactions</p>
                   <div className="table-custom">
-                    <table className="table is-fullwidth">
-                      <thead>
-                        <tr>
-                          <th>Firstname</th>
-                          <th>Lastname</th>
-                          <th>Age</th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <tr>
-                          <td>Jill</td>
-                          <td>Smith</td>
-                          <td>50</td>
-                        </tr>
-                        <tr>
-                          <td>Eve</td>
-                          <td>Jackson</td>
-                          <td>94</td>
-                        </tr>
-                        <tr>
-                          <td>Eve</td>
-                          <td>Jackson</td>
-                          <td>94</td>
-                        </tr>
-                        <tr>
-                          <td>Eve</td>
-                          <td>Jackson</td>
-                          <td>94</td>
-                        </tr>
-                        <tr>
-                          <td>Eve</td>
-                          <td>Jackson</td>
-                          <td>94</td>
-                        </tr>
-                        <tr>
-                          <td>Eve</td>
-                          <td>Jackson</td>
-                          <td>94</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <Table recentTransactions={this.props.recentTransactions} />
                   </div>
                 </article>
               </div>

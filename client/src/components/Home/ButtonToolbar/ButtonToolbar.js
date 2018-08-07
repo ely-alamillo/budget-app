@@ -2,15 +2,18 @@ import React from 'react';
 import { Modal } from '../../shared/Modal/Modal';
 import CreateBudgetForm from '../CreatBudgetForm/CreateBudgetForm';
 import AddExpenseForm from '../AddExpenseForm/AddExpenseForm';
+import { Transactions } from '../Transactions/Transactions';
 
 const ButtonToolbar = props => {
   const createBudget = '#createBudget';
   const addExpense = '#addExpense';
+  const showTrans = '#showTrans';
 
   const toggle = modalId => {
     document.getElementById(modalId).classList.toggle('is-active');
   };
 
+  console.log('toolabar create: ', props.createDisabled);
   return (
     <div className="level">
       <div className="level-left">
@@ -38,6 +41,17 @@ const ButtonToolbar = props => {
             Add Expense
           </button>
         </p>
+
+        <p className="level-item">
+          <button
+            className="button"
+            onClick={() => toggle(showTrans)}
+            disabled={props.showTransDisabled}
+          >
+            Show All transactions
+          </button>
+        </p>
+
         <p className="level-item">
           <button
             className="button"
@@ -55,11 +69,18 @@ const ButtonToolbar = props => {
           modalId={createBudget}
         />
       </Modal>
-      <Modal for={addExpense} title={'A Expense'}>
+      <Modal for={addExpense} title={'Add Expense'}>
         <AddExpenseForm
           addExpense={props.addExpense}
           closeModal={toggle}
           modalId={addExpense}
+        />
+      </Modal>
+      <Modal for={showTrans} title={'Transactions'}>
+        <Transactions
+          transactions={props.transactions}
+          closeModal={toggle}
+          modalId={showTrans}
         />
       </Modal>
     </div>
