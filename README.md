@@ -24,6 +24,8 @@ cd budget-app
 
 ## Install the backend
 
+Make sure you have an instance for Postgres running, as this project depends on it
+
 ```bash
 cd budget_api
 
