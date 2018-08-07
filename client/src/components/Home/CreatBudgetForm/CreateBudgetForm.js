@@ -3,7 +3,6 @@ const intialState = {
   category: '',
   budgetName: '',
   budgetTotal: '',
-  category: '',
   description: '',
   expenses: []
 };
