@@ -24,7 +24,11 @@ cd budget-app
 
 ## Install the backend
 
-Make sure you have an instance for Postgres running, as this project depends on it
+- ### You will need to have Elixir installed for this project, you can install it [here](https://elixir-lang.org/install.html)
+
+- ### Additionaly you will need Phoenix installed, you can install it [here](https://hexdocs.pm/phoenix/installation.html)
+
+- ### Finally, make sure you have an instance for Postgres running, as this project depends on it
 
 ```bash
 cd budget_api
