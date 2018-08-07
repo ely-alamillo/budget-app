@@ -42,7 +42,7 @@ mix ecto.migrate
 # lauch the server
 mix phoenix.server
 
-you can now access the server at http://localhost:4000
+# you can now access the server at http://localhost:4000
 ```
 
 ## Install the frontend
@@ -57,5 +57,5 @@ npm install
 # launch frontend server
 npm run start
 
-you can now access the server at http://localhost:3000
+# you can now access the server at http://localhost:3000
 ```
