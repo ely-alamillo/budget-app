@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import LineChart from '../Charts/LineChart/LineChart';
 import './Dashboard.css';
 import RadarChart from '../Charts/RadarChart/RadarChart';
 import { Table } from '../Table/Table';
@@ -85,7 +84,7 @@ class Dashboard extends Component {
             <div className="tile">
               <div className="tile is-parent ">
                 <article className="tile is-child notification is-primary">
-                  <p className="title">Budget and Expenses</p>
+                  <p className="title">Budget vs Expenses</p>
                   <DonutChart
                     expensesTotal={this.props.expensesTotal}
                     budgetTotal={this.props.budgetTotal}

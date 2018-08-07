@@ -7,9 +7,6 @@ const isNil = x => {
   return x === undefined || x === null;
 };
 
-const validateData = x => {
-  return isNil(x) ? 0 : x;
-};
 
 class DonutChart extends Component {
   getDonutData = () => {
