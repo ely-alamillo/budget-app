@@ -38,7 +38,8 @@ defmodule BudgetApi.Router do
     # budget endpoints
     get "/budgets", BudgetsController, :index # show all budgets
     get "/budgets/:name", BudgetsController, :show # get a single budget
-    post "budget", BudgetsController, :create # create budget
+    # get "/budgetsDelete", BudgetsController, :delete_all # delete all budgets
+    post "/budget", BudgetsController, :create # create budget
     
   end
 end

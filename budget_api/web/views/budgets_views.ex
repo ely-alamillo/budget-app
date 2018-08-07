@@ -20,4 +20,11 @@ defmodule BudgetApi.BudgetsView do
       budget: budgets_json(budget)
     }
   end
+
+  def render("delete.json", success) do
+    %{
+      success: success
+    }
+  end
+
 end

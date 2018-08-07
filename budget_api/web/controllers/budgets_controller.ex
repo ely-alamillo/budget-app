@@ -23,4 +23,13 @@ defmodule BudgetApi.BudgetsController do
     budget = Repo.get(Budgets, id)
     render conn, "show.json", budget: budget
   end
+
+  def delete_all(conn, _params) do
+    case Repo.delete_all(Budgets) do
+    {:ok, _budgets} ->
+      render conn, "delete.json", true
+    {:error, changeset} ->
+      render conn, "error.json", error: "erro in budget create"
+    end
+  end
 end
