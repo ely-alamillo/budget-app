@@ -1,26 +1,92 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import axios from 'axios';
 import { Component } from 'react';
 
 import ButtonToolbar from './ButtonToolbar/ButtonToolbar';
 import Dashboard from './Dashboard/Dashboard';
 
 import './Home.css';
-import { totalmem } from 'os';
+
+const baseUrl = 'http://localhost:4000/api';
+const defaultState = {
+  budgets: {},
+  selectedBudget: {},
+  stats: {},
+  createDisabled: false,
+  expenseDisabled: true
+};
 
 class Home extends Component {
-  state = { budgets: {}, selectedBudget: {}, stats: {} };
   // state = testState;
+  componentWillMount() {
+    this.setState(defaultState);
+  }
+
+  componentDidMount() {
+    const requests = [this.getBudgets(), this.getExpenses()];
+    let createDisabled;
+    Promise.all(requests)
+      .then(([budgetData, expensesData]) => {
+        const { budgets } = budgetData.data;
+        const { expenses } = expensesData.data;
+        console.log({ budgets, expenses });
+        if (budgets.length === 0) {
+          createDisabled = true;
+          this.setState(defaultState);
+        } else {
+          const budget = { ...budgets[0], expenses };
+
+          this.setState(
+            {
+              budgets: {
+                [budgets[0].budgetName]: budget
+              },
+              selectedBudget: { ...budget },
+              createDisabled
+            },
+            () => this.calculateSpendingByCat()
+          );
+        }
+      })
+      .catch(e => console.log(e));
+  }
+
+  getBudgets = () => {
+    return axios.get(`${baseUrl}/budgets`);
+  };
+
+  getExpenses = () => {
+    return axios.get(`${baseUrl}/expenses`);
+  };
 
   createBudget = budget => {
     console.log('set create budget');
     const name = budget.budgetName;
-    this.setState({ budgets: { [name]: budget }, selectedBudget: budget });
+    // console.log(budget);
+    axios
+      .post(`${baseUrl}/budget`, budget)
+      .then(x => {
+        console.log('reply', x);
+        this.setState({
+          budgets: { [name]: budget },
+          selectedBudget: budget,
+          createDisabled: true,
+          expenseDisabled: false
+        });
+      })
+      .catch(e => console.log(e));
   };
 
   addExpense = expense => {
     const { budgetName } = this.state.selectedBudget;
     const { expenses } = this.state.budgets[budgetName];
+    console.log(expense);
+    axios
+      .post(`${baseUrl}/expenses`, expense)
+      .then(x => {
+        console.log('add: ', x);
+      })
+      .catch(e => console.log(e));
 
     this.setState(
       {
@@ -73,6 +139,8 @@ class Home extends Component {
         <ButtonToolbar
           createBudget={this.createBudget}
           addExpense={this.addExpense}
+          createDisabled={this.state.createDisabled}
+          expenseDisabled={this.state.expenseDisabled}
         />
         <Dashboard
           budget={this.state.selectedBudget}
