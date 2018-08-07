@@ -13,7 +13,6 @@ const ButtonToolbar = props => {
     document.getElementById(modalId).classList.toggle('is-active');
   };
 
-  console.log('toolabar create: ', props.createDisabled);
   return (
     <div className="level">
       <div className="level-left">

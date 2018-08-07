@@ -32,7 +32,6 @@ class Home extends Component {
         const { expenses } = expensesData.data;
         const showTrans = expenses.length > 0 ? false : true;
 
-        console.log({ budgets, expenses });
         if (budgets.length < 1) {
           void 0;
         } else {
@@ -49,7 +48,7 @@ class Home extends Component {
               expenseDisabled: false,
               showTransDisabled: showTrans
             },
-            () => this.calculateSpendingByCat()
+            () => this.calculateStats()
           );
         }
       })
@@ -65,9 +64,7 @@ class Home extends Component {
   };
 
   createBudget = budget => {
-    console.log('set create budget');
     const name = budget.budgetName;
-    // console.log(budget);
     axios
       .post(`${baseUrl}/budget`, budget)
       .then(x => {
@@ -115,8 +112,6 @@ class Home extends Component {
     const getTotal = (acc, exp) => acc + Number(exp.expenseTotal);
     const expensesTotal = selectedBudget.expenses.reduce(getTotal, 0);
 
-    console.log('stats', this.state);
-
     this.setState({ ...this.state, stats: { expensesTotal } }, () =>
       this.calculateSpendingByCat()
     );
@@ -132,8 +127,6 @@ class Home extends Component {
       return total;
     };
     const categoryTotal = selectedBudget.expenses.reduce(getTotal, {});
-
-    console.log('stats', this.state);
 
     this.setState({
       ...this.state,
@@ -157,6 +150,8 @@ class Home extends Component {
           stats={this.state.stats}
           radarChartData={this.state.stats.categoryTotal}
           recentTransactions={this.state.selectedBudget.expenses}
+          budgetTotal={this.state.selectedBudget.budgetTotal}
+          expensesTotal={this.state.stats.expensesTotal}
         />
       </section>
     );

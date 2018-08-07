@@ -24,7 +24,7 @@ export const Table = props => {
           return (
             <tr key={i}>
               <td>{x.expenseName}</td>
-              <td>{x.expenseTotal}</td>
+              <td>{Number(x.expenseTotal).toLocaleString()}</td>
               <td>{x.category}</td>
             </tr>
           );

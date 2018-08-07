@@ -3,6 +3,7 @@ import LineChart from '../Charts/LineChart/LineChart';
 import './Dashboard.css';
 import RadarChart from '../Charts/RadarChart/RadarChart';
 import { Table } from '../Table/Table';
+import DonutChart from '../Charts/DonutChart/DonutChart';
 
 class Dashboard extends Component {
   render() {
@@ -20,15 +21,29 @@ class Dashboard extends Component {
                       : 'Budget Total'}
                   </p>
                   <p className="title">
-                    {budget.budgetTotal ? budget.budgetTotal : '0.00'}
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-dollar-sign" />
+                    </span>
+                    <span style={{ marginLeft: '15px' }}>
+                      {budget.budgetTotal
+                        ? Number(budget.budgetTotal).toLocaleString()
+                        : '0.00'}
+                    </span>
                   </p>
                 </article>
               </div>
               <div className="tile is-parent ">
                 <article className="tile is-child notification is-warning">
-                  <p className="subtitle">Expenses</p>
+                  <p className="subtitle">Expenses (total)</p>
                   <p className="title">
-                    {stats.expensesTotal ? stats.expensesTotal : '0.00'}
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-dollar-sign" />
+                    </span>
+                    <span style={{ marginLeft: '15px' }}>
+                      {stats.expensesTotal
+                        ? Number(stats.expensesTotal).toLocaleString()
+                        : '0.00'}
+                    </span>
                   </p>
                 </article>
               </div>
@@ -38,9 +53,16 @@ class Dashboard extends Component {
                 <article className="tile is-child notification is-success">
                   <p className="subtitle">Available Budget</p>
                   <p className="title">
-                    {budget.budgetTotal && stats.expensesTotal
-                      ? budget.budgetTotal - stats.expensesTotal
-                      : '0.00'}
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-dollar-sign" />
+                    </span>
+                    <span style={{ marginLeft: '15px' }}>
+                      {budget.budgetTotal && stats.expensesTotal
+                        ? Number(
+                            budget.budgetTotal - stats.expensesTotal
+                          ).toLocaleString()
+                        : '0.00'}
+                    </span>
                   </p>
                 </article>
               </div>
@@ -64,7 +86,10 @@ class Dashboard extends Component {
               <div className="tile is-parent ">
                 <article className="tile is-child notification is-primary">
                   <p className="title">Budget and Expenses</p>
-                  <LineChart />
+                  <DonutChart
+                    expensesTotal={this.props.expensesTotal}
+                    budgetTotal={this.props.budgetTotal}
+                  />
                 </article>
               </div>
             </div>
